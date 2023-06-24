@@ -183,9 +183,9 @@ ul {
 }
 
 .card__animal-profile {
+  width: 80%;
   display: flex;
   gap: 20px;
-  justify-content: center;
   align-items: center;
   margin-bottom: 15px;
   cursor: pointer;
@@ -229,6 +229,12 @@ ul {
   background-color: #fff;
   display: flex;
   padding: 10px;
+}
+
+.animal__img {
+  margin-top: 20px;
+  width: 100%;
+  height: 350px;
 }
 
 .animal__vote {
