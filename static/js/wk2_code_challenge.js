@@ -54,6 +54,15 @@ const createAnimals = (data) => {
     div.addEventListener("click", buildAnimalProfileHandler);
     animalListNode.appendChild(div);
   });
+
+  displayFirstAnimalByDefault(data[0]); // pass first object
+};
+/**
+ * Initialize animal Profile when page first loads
+ * @param {*} data
+ */
+const displayFirstAnimalByDefault = (data) => {
+  createAnimalProfile(data);
 };
 
 const createAnimalProfile = (data) => {

@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Phase-1 Wk-2 Code Challenge</title>
     <link rel="stylesheet" href="./static/css/main.css" />
     <script defer src="./static/js/wk2_code_challenge.js"></script>
@@ -17,15 +21,24 @@
           placeholder="Search Animals"
         />
       </div>
-      <div class="header__app">Get App</div>
+      <div class="header__app">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </div>
       <div class="header__log-in"><a href="#">Log In</a></div>
-      <div class="header__profile-menu">icon</div>
+      <div class="header__profile-menu">
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </div>
     </header>
     <main class="main">
       <section class="main__left-section main__left-section--fixed">
         <ul class="main__vertical-nav">
-          <li class="main__vertical-nav-item"><a href="#">Home</a></li>
-          <li class="main__vertical-nav-item"><a href="#">Popular</a></li>
+          <li class="main__vertical-nav-item">
+            <i class="fa fa-home" aria-hidden="true"></i><a href="#">Home</a>
+          </li>
+          <li class="main__vertical-nav-item">
+            <i class="fa fa-fire" aria-hidden="true"></i><a href="#">Popular</a>
+          </li>
         </ul>
         <div class="card">
           <h1 class="card__title card__title--font-size">Animals</h1>
