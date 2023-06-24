@@ -58,10 +58,12 @@ const createAnimals = (data) => {
 
 const createAnimalProfile = (data) => {
   const voteNode = animalVotesNode.querySelector("h1");
-  const button = animalVotesNode.querySelector("button");
+  const voteButtonNode = animalVotesNode.querySelector("#vote");
+  const resetButtonNode = animalVotesNode.querySelector("#reset");
 
   voteNode.textContent = data.votes;
-  button.addEventListener("click", incrementVotesHandler);
+  voteButtonNode.addEventListener("click", incrementVotesHandler);
+  resetButtonNode.addEventListener("click", resetVotesHandler);
 
   const nameNode = animalDetailNode.querySelector("h1");
   const imageNode = animalDetailNode.querySelector("img");
@@ -76,6 +78,12 @@ const incrementVotesHandler = (e) => {
   const votesNode = parentNode.querySelector("h1");
   const votes = Number.parseInt(votesNode.textContent);
   votesNode.textContent = incrementNumberByOne(votes);
+};
+
+const resetVotesHandler = (e) => {
+  const parentNode = e.target.parentNode;
+  const votesNode = parentNode.querySelector("h1");
+  votesNode.textContent = 0;
 };
 
 const incrementNumberByOne = (num) => {
