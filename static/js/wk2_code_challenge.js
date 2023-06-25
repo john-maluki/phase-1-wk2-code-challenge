@@ -29,6 +29,22 @@ const fetchAnimalById = (id) => {
     .then((data) => createAnimalProfile(data));
 };
 
+const patchAnimalVotes = async (id, data) => {
+  return await fetch(`${getDomainUrl()}/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then((res) => {
+    if (res.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+};
+
 const getAllAnimals = async () => {
   return await fetchAllAnimals();
 };
@@ -90,6 +106,7 @@ const createAnimalProfile = (data) => {
   const resetButtonNode = animalVotesNode.querySelector("#reset");
 
   voteNode.textContent = data.votes;
+  voteNode.id = data.id;
   voteButtonNode.addEventListener("click", incrementVotesHandler);
   resetButtonNode.addEventListener("click", resetVotesHandler);
 
@@ -105,17 +122,31 @@ const incrementVotesHandler = (e) => {
   const parentNode = e.target.parentNode;
   const votesNode = parentNode.querySelector("h1");
   const votes = Number.parseInt(votesNode.textContent);
-  votesNode.textContent = incrementNumberByOne(votes);
+
+  const id = votesNode.id;
+  votesNode.textContent = incrementNumberByOne(id, votes);
 };
 
 const resetVotesHandler = (e) => {
   const parentNode = e.target.parentNode;
   const votesNode = parentNode.querySelector("h1");
-  votesNode.textContent = 0;
+  const id = votesNode.id;
+  const data = { votes: 0 };
+  const isSaved = patchAnimalVotes(id, data);
+  if (isSaved) {
+    votesNode.textContent = 0;
+  }
 };
 
-const incrementNumberByOne = (num) => {
-  return (num += 1);
+const incrementNumberByOne = (id, num) => {
+  const incrementedValue = num + 1;
+  const data = { votes: incrementedValue };
+  const isSaved = patchAnimalVotes(id, data);
+  if (isSaved) {
+    return (num += 1);
+  } else {
+    return num;
+  }
 };
 
 /**
