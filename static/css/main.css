@@ -61,6 +61,7 @@ ul {
   border-radius: 20px;
   font-size: 15px;
   background-color: #f6f7f8;
+  outline-style: none;
 }
 
 .header__search {
@@ -84,6 +85,11 @@ ul {
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
+}
+
+.header__app,
+.header__profile-menu {
+  cursor: pointer;
 }
 
 /* Main section */
@@ -261,4 +267,108 @@ ul {
   background-color: #ff4500;
   border: none;
   cursor: pointer;
+}
+
+/* Left modal */
+.modal {
+  display: none;
+  width: 370px;
+  height: 100vh;
+  position: fixed;
+  background-color: #fff;
+  top: 70px;
+  right: 0;
+  transition: all 1s linear;
+}
+
+.modal--visible {
+  display: block;
+}
+
+.modal__close {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  transform: scale(1.2);
+  opacity: 0.8;
+  background-color: #dae0e6;
+  cursor: pointer;
+}
+
+.modal__form {
+  width: 60%;
+  margin: 30% auto 0 auto;
+}
+
+.modal__name,
+.modal__input {
+  display: block;
+}
+
+.modal__name {
+  font-size: 25px;
+  font-weight: bold;
+}
+.modal__input {
+  margin: 20px;
+  padding: 10px;
+  background-color: #f6f7f8;
+  border: none;
+  outline-style: none;
+  font-size: 15px;
+}
+
+.modal__input[type="submit"] {
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  box-shadow: 1px 3px 5px grey;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 30px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3 linear;
+}
+
+.modal__input[type="submit"]:hover {
+  box-shadow: 1px 1px 2px grey;
+  opacity: 1;
+}
+
+/* Search Pane */
+.search-pane {
+  display: none;
+  width: 400px;
+  height: fit-content;
+  background-color: white;
+  position: fixed;
+  top: 70px;
+  left: 220px;
+  box-shadow: 4px 5px 7px 1px grey, 4px 5px 7px 1px grey;
+  padding: 20px;
+}
+
+.search-pane--visible {
+  display: block;
+}
+
+.search-pane__result {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-pane__img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px double black;
+  opacity: 0.5;
+  margin-right: 10px;
+}
+
+.search-pane__name {
+  text-decoration: underline;
 }

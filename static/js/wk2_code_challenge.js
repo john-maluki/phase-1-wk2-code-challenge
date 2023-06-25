@@ -108,7 +108,7 @@ const buildAnimalProfileHandler = (e) => {
 };
 
 /**
- * Initializes app when the app is loaded
+ * Initializes app when loaded
  */
 const init = () => {
   fetchAllAnimals();
