@@ -3,6 +3,7 @@ const MAIN_URL = "http://localhost:3000/characters";
 const animalListNode = document.querySelector("#animal-list");
 const animalVotesNode = document.querySelector("#animal__vote");
 const animalDetailNode = document.querySelector("#animal__detail");
+const modalFormNode = document.querySelector("#modal__form");
 
 const getDomainUrl = () => {
   return MAIN_URL;
@@ -12,10 +13,10 @@ const getDomainUrl = () => {
  * Fethes all character animals from the server using get
  * request. It returns an array of objects
  */
-const fetchAllAnimals = () => {
-  fetch(getDomainUrl())
+const fetchAllAnimals = async () => {
+  return fetch(getDomainUrl())
     .then((result) => result.json())
-    .then((data) => createAnimals(data));
+    .then((data) => data);
 };
 
 /**
@@ -26,6 +27,24 @@ const fetchAnimalById = (id) => {
   fetch(`${getDomainUrl()}/${id}`)
     .then((result) => result.json())
     .then((data) => createAnimalProfile(data));
+};
+
+const getAllAnimals = async () => {
+  return await fetchAllAnimals();
+};
+
+const postAnimal = (animalDetails) => {
+  fetch(getDomainUrl(), {
+    method: "POST",
+    body: JSON.stringify(animalDetails),
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then((res) => {
+    if (res.status === 201) {
+      fetchAllAnimals();
+    }
+  });
 };
 
 /**
@@ -107,11 +126,25 @@ const buildAnimalProfileHandler = (e) => {
   fetchAnimalById(animalId);
 };
 
+const modalFormHandler = (e) => {
+  const inputName = e.target.querySelector("#modal__name");
+  const inputUrl = e.target.querySelector("#modal__url");
+  const animalData = {
+    name: inputName.value,
+    image: inputUrl.value,
+    votes: 0,
+  };
+  postAnimal(animalData);
+};
+
 /**
  * Initializes app when loaded
  */
-const init = () => {
-  fetchAllAnimals();
+const init = async () => {
+  const data = await getAllAnimals();
+  createAnimals(data);
 };
+
+modalFormNode.addEventListener("submit", modalFormHandler);
 
 window.onload = init;

@@ -31,3 +31,13 @@ Animal Profile details appears as follows
               />
             </div>
           </div>
+
+Search div formart
+<div class="search-pane__result">
+        <img
+          class="search-pane__img"
+          src="https://thumbs.gfycat.com/EquatorialIckyCat-max-1mb.gif"
+          alt="animal"
+        />
+        <p class="search-pane__name">Mr. Cute</p>
+      </div>

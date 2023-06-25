@@ -23,7 +23,7 @@
           placeholder="Search Animals"
         />
       </div>
-      <div id="header__app" class="header__app">
+      <div id="header__app" class="header__app" title="Create new Animal">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </div>
       <div class="header__log-in"><a href="#">Log In</a></div>
@@ -99,13 +99,14 @@
       <div id="modal__close" class="modal__close" title="close">
         <i class="fa fa-times" aria-hidden="true"></i>
       </div>
-      <form class="modal__form" action="#">
+      <form id="modal__form" class="modal__form" action="#">
         <label for="modal__name">Animal Name:</label>
         <input
           class="modal__input"
           id="modal__name"
           type="text"
           placeholder="name"
+          required
         />
         <label for="modal__url">Image Url:</label>
         <input
@@ -113,19 +114,13 @@
           id="modal__url"
           type="url"
           placeholder="image url"
+          required
         />
         <input class="modal__input" type="submit" value="Send" />
       </form>
     </section>
     <section id="search-pane" class="search-pane">
-      <div class="search-pane__result">
-        <img
-          class="search-pane__img"
-          src="https://thumbs.gfycat.com/EquatorialIckyCat-max-1mb.gif"
-          alt="animal"
-        />
-        <p class="search-pane__name">Mr. Cute</p>
-      </div>
+      <!-- search pane result goes here -->
     </section>
   </body>
 </html>

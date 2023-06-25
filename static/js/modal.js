@@ -17,7 +17,6 @@ const toggleModalPaneHandler = (e) => {
 };
 
 const toggleSearchPaneHandler = (e) => {
-  e.preventDefault();
   const isOpen = searchPaneNode.classList.contains("search-pane--visible");
 
   if (isOpen) {
@@ -27,8 +26,49 @@ const toggleSearchPaneHandler = (e) => {
   }
 };
 
+const buildResultPane = (data) => {
+  deleteAllChildrenFromNode(searchPaneNode.children);
+  data.forEach((element) => {
+    const div = document.createElement("div");
+    const img = document.createElement("img");
+    const p = document.createElement("p");
+
+    div.classList.add("search-pane__result");
+    img.classList.add("search-pane__img");
+    p.classList.add("search-pane__name");
+
+    img.src = element.image;
+    img.alt = element.name;
+    p.textContent = element.name;
+    div.addEventListener("click", buildAnimalFromSearchedResultHandler);
+    div.id = element.id;
+    div.appendChild(img);
+    div.appendChild(p);
+    searchPaneNode.appendChild(div);
+  });
+};
+
+const deleteAllChildrenFromNode = (nodes) => {
+  for (const node of nodes) {
+    node.remove();
+  }
+};
+
+const buildAnimalFromSearchedResultHandler = (e) => {
+  console.log(e.target);
+};
+
+const searchValueHandler = async (e) => {
+  const searchableData = await getAllAnimals();
+  const matchingData = searchableData.filter((data) =>
+    data.name.toLowerCase().includes(e.target.value.toLowerCase())
+  );
+  buildResultPane(matchingData);
+};
+
 headerAppNode.addEventListener("click", toggleModalPaneHandler);
 modalCloseNode.addEventListener("click", toggleModalPaneHandler);
 
 headerSearchNode.addEventListener("focus", toggleSearchPaneHandler);
 headerSearchNode.addEventListener("blur", toggleSearchPaneHandler);
+headerSearchNode.addEventListener("input", searchValueHandler);

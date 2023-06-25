@@ -358,6 +358,7 @@ ul {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .search-pane__img {
